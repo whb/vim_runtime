@@ -106,19 +106,11 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
-if MySys() == "windows"
-    " Fast editing of the .vimrc
-    map <leader>e :e! ~/_vim_runtime/vimrc<cr>
+" Fast editing of the .vimrc
+map <leader>e :e! ~/.vim_runtime/vimrc<cr>
 
-    " When vimrc is edited, reload it
-    autocmd! bufwritepost vimrc source ~/_vim_runtime/vimrc
-else
-    " Fast editing of the .vimrc
-    map <leader>e :e! ~/.vim_runtime/vimrc<cr>
-
-    " When vimrc is edited, reload it
-    autocmd! bufwritepost vimrc source ~/.vim_runtime/vimrc
-endif
+" When vimrc is edited, reload it
+autocmd! bufwritepost vimrc source ~/.vim_runtime/vimrc
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -169,7 +161,6 @@ if MySys() == "mac"
   set gfn=Menlo:h14
   set shell=/bin/bash
 elseif MySys() == "windows"
-  set gfn=Bitstream\ Vera\ Sans\ Mono:h10
 elseif MySys() == "linux"
   set gfn=Monospace\ 10
   set shell=/bin/bash
@@ -177,6 +168,7 @@ endif
 
 if has("gui_running")
   set guioptions-=T
+  set guioptions-=m
   set t_Co=256
   set background=dark
   colorscheme peaksea
