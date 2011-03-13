@@ -606,6 +606,7 @@ map <leader>f :MRU<CR>
 """"""""""""""""""""""""""""""
 " => Command-T
 """"""""""""""""""""""""""""""
+let g:ruby_path = ".,,"
 let g:CommandTMaxHeight = 15
 set wildignore+=*.o,*.obj,.git,*.pyc
 noremap <leader>y :CommandTFlush<cr>
