@@ -213,8 +213,8 @@ endtry
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set smarttab
 
 set lbr
@@ -428,7 +428,7 @@ function! GitBranch()
 endfunction
 
 function! CurDir()
-    return substitute(getcwd(), '/Users/amir/', "~/", "g")
+    return substitute(getcwd(), '/home/whb/', "~/", "g")
 endfunction
 
 function! HasPaste()
@@ -606,7 +606,11 @@ map <leader>f :MRU<CR>
 """"""""""""""""""""""""""""""
 " => Command-T
 """"""""""""""""""""""""""""""
-let g:ruby_path = ".,,"
+" hack for windows vim + ruby
+if MySys() == "windows"
+  let g:ruby_path = ".,,"
+endif
+
 let g:CommandTMaxHeight = 15
 set wildignore+=*.o,*.obj,.git,*.pyc
 noremap <leader>y :CommandTFlush<cr>
