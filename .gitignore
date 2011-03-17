@@ -3,4 +3,4 @@
 *.log
 *.def
 Makefile
-
+.netrwhist

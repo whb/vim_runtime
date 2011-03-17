@@ -638,6 +638,10 @@ au BufRead,BufNewFile ~/buffer iab <buffer> xh1 ================================
 map <leader>pp :setlocal paste!<cr>
 
 map <leader>bb :cd ..<cr>
+map <leader>zz :xa<cr>
+
+nnoremap <silent><M-o> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><M-O> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 map <leader>ct :cd ~/Desktop/Todoist/todoist<cr>
 map <leader>cw :cd ~/Desktop/Wedoist/wedoist<cr>
