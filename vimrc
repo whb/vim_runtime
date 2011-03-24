@@ -43,9 +43,9 @@
 "
 "
 " Plugins_Included:
-"     > minibufexpl.vim - http://www.vim.org/scripts/script.php?script_id=159
-"       Makes it easy to get an overview of buffers:
-"           info -> :e ~/.vim_runtime/plugin/minibufexpl.vim
+"     > buftabs.vim - http://www.vim.org/scripts/script.php?script_id=1664
+"       Shows a tabs-like list of buffers in the bottom of the window:
+"           info -> :e ~/.vim_runtime/plugin/buftabs.vim
 " 
 "     > bufexplorer - http://www.vim.org/scripts/script.php?script_id=42
 "       Makes it easy to switch between buffers:
@@ -170,14 +170,12 @@ if has("gui_running")
   set guioptions-=T
   set guioptions-=m
   set t_Co=256
-  set background=dark
   colorscheme peaksea
-  set nonu
 else
   colorscheme zellner
-  set background=dark
-  set nonu
 endif
+set background=dark
+set nonu
 
 set encoding=utf8
 try
@@ -393,7 +391,7 @@ endfunction
 " Specify the behavior when switching between buffers 
 try
   set switchbuf=usetab
-  #set stal=2
+  "set stal=2
 catch
 endtry
 
@@ -442,11 +440,6 @@ endfunction
 
 " Format the statusline
 "set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L%{GitBranch()}
-"set statusline=Line:\ %l/%L%{GitBranch()}
-"let l:list=GitBranch()
-"let w:original_statusline = matchstr(&statusline, "%=.*")
-"set statusline = l:list . w:original_statusline
-set number
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket expanding
@@ -523,27 +516,16 @@ map <leader>o :BufExplorer<cr>
 
 
 """"""""""""""""""""""""""""""
-" => Minibuffer plugin
+" => buftabs plugin
 """"""""""""""""""""""""""""""
-"let g:miniBufExplModSelTarget = 1
-"let g:miniBufExplorerMoreThanOne = 0
-"let g:miniBufExplModSelTarget = 0
-"let g:miniBufExplUseSingleClick = 1
-"let g:miniBufExplMapWindowNavVim = 1
-"if has("gui_running")
-"  let g:miniBufExplVSplit = 30
-"  let g:miniBufExplSplitBelow=1
-"endif
-
-"autocmd BufRead,BufNew :call UMiniBufExplorer
-"map <leader>u :TMiniBufExplorer<cr>
-
 let g:buftabs_only_basename=1
 noremap <left> :bprev<CR>
 noremap <right> :bnext<CR>
 set laststatus=2
 let g:buftabs_in_statusline=1
 let g:buftabs_active_highlight_group="Visual"
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -654,7 +636,6 @@ au BufRead,BufNewFile ~/buffer iab <buffer> xh1 ================================
 map <leader>pp :setlocal paste!<cr>
 
 map <leader>bb :cd ..<cr>
-map <leader>zz :xa<cr>
 
 nnoremap <silent><M-o> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><M-O> :set paste<CR>m`O<Esc>``:set nopaste<CR>
