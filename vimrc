@@ -441,7 +441,12 @@ function! HasPaste()
 endfunction
 
 " Format the statusline
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L%{GitBranch()}
+"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L%{GitBranch()}
+"set statusline=Line:\ %l/%L%{GitBranch()}
+"let l:list=GitBranch()
+"let w:original_statusline = matchstr(&statusline, "%=.*")
+"set statusline = l:list . w:original_statusline
+set number
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket expanding
@@ -520,19 +525,25 @@ map <leader>o :BufExplorer<cr>
 """"""""""""""""""""""""""""""
 " => Minibuffer plugin
 """"""""""""""""""""""""""""""
-let g:miniBufExplModSelTarget = 1
-let g:miniBufExplorerMoreThanOne = 0
-let g:miniBufExplModSelTarget = 0
-let g:miniBufExplUseSingleClick = 1
-let g:miniBufExplMapWindowNavVim = 1
-if has("gui_running")
-  let g:miniBufExplVSplit = 30
-  let g:miniBufExplSplitBelow=1
-endif
+"let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplorerMoreThanOne = 0
+"let g:miniBufExplModSelTarget = 0
+"let g:miniBufExplUseSingleClick = 1
+"let g:miniBufExplMapWindowNavVim = 1
+"if has("gui_running")
+"  let g:miniBufExplVSplit = 30
+"  let g:miniBufExplSplitBelow=1
+"endif
 
-autocmd BufRead,BufNew :call UMiniBufExplorer
-map <leader>u :TMiniBufExplorer<cr>
+"autocmd BufRead,BufNew :call UMiniBufExplorer
+"map <leader>u :TMiniBufExplorer<cr>
 
+let g:buftabs_only_basename=1
+noremap <left> :bprev<CR>
+noremap <right> :bnext<CR>
+set laststatus=2
+let g:buftabs_in_statusline=1
+let g:buftabs_active_highlight_group="Visual"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
