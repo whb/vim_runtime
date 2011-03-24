@@ -363,6 +363,8 @@ map <leader>tn :tabnew! %<cr>
 map <leader>te :tabedit 
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
+set showtabline=1
+set guitablabel=%t
 
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
@@ -391,7 +393,7 @@ endfunction
 " Specify the behavior when switching between buffers 
 try
   set switchbuf=usetab
-  set stal=2
+  #set stal=2
 catch
 endtry
 
@@ -494,7 +496,6 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 
-set guitablabel=%t
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -524,14 +525,13 @@ let g:miniBufExplorerMoreThanOne = 0
 let g:miniBufExplModSelTarget = 0
 let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplVSplit = 30
-let g:miniBufExplSplitBelow=1
+if has("gui_running")
+  let g:miniBufExplVSplit = 30
+  let g:miniBufExplSplitBelow=1
+endif
 
 autocmd BufRead,BufNew :call UMiniBufExplorer
-
 map <leader>u :TMiniBufExplorer<cr>
-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions
@@ -616,6 +616,11 @@ set wildignore+=*.o,*.obj,.git,*.pyc
 noremap <leader>y :CommandTFlush<cr>
 "noremap! <leader>j :PeepOpen<cr>
 
+
+""""""""""""""""""""""""""""""
+" => Acsiidoc syntax(change default value)
+""""""""""""""""""""""""""""""
+set nolist
 
 """"""""""""""""""""""""""""""
 " => Vim grep
