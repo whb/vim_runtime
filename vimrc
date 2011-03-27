@@ -177,14 +177,14 @@ endif
 set background=dark
 set nonu
 
-set encoding=utf8
+set encoding=utf-8
 try
     lang en_US
 catch
 endtry
 
 set ffs=unix,dos,mac "Default file types
-
+set fileencodings=utf-8,gbk "Try utf-8 and gbk encode when opening file
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
