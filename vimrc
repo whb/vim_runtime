@@ -611,11 +611,6 @@ noremap <leader>y :CommandTFlush<cr>
 
 
 """"""""""""""""""""""""""""""
-" => Acsiidoc syntax(change default value)
-""""""""""""""""""""""""""""""
-set nolist
-
-""""""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
